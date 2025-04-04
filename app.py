@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import pickle
 from pydantic import BaseModel
-
+import os
 app = FastAPI()
 
 
@@ -62,4 +62,5 @@ def predict(input_data: InputVar):
 
 
 if __name__ == '__main__':
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    port = int(os.getenv("PORT", 8000))  # Utilise le port donné par Railway
+    uvicorn.run(app, host="0.0.0.0", port=port)
