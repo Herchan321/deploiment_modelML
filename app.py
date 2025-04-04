@@ -61,6 +61,8 @@ def predict(input_data: InputVar):
         raise HTTPException(status_code=500, detail=f"Erreur de prédiction : {e}")
 
 
+
+
 if __name__ == '__main__':
-    port = int(os.getenv("PORT", 8000))  # Utilise le port donné par Railway
+    port = int(os.environ.get("PORT", 5000))  # Récupère la variable PORT ou utilise 5000 par défaut
     uvicorn.run(app, host="0.0.0.0", port=port)
